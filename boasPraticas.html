@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR Mastery - Como ter sua Pull Request aprovada</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/boasPraticas.css">
+</head>
+
+<body>
+
+    <nav>
+        <strong id="title">Amigos do Pull</strong>
+        <div>
+            <a href="#fluxo">Fluxo</a>
+            <a href="#checklist">Checklist</a>
+            <a href="#descricao">Descrição</a>
+            <a href="#simulador">Simulador</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 id="title">Como ter sua Pull Request aprovada</h1>
+        <p>Uma PR não é só código. É comunicação, estratégia e reputação profissional.</p>
+    </section>
+
+    <div class="fluxo">
+        <section id="fluxo" class="section">
+            <h2 id="title">O ciclo real da Pull Request</h2>
+            <img src="https://nulab.com/static/f1e365e555c594cf25c35e4d56c5dedc/5a190/01.png" alt="">
+        </section>
+
+        <section id="checklist" class="section">
+            <h2 id="title">Checklist antes de abrir</h2>
+            <p>A Pull Request é muito mais do que um passo técnico no fluxo de desenvolvimento. Ela é um mecanismo de
+                qualidade, colaboração e aprendizado dentro de um time. Faça seu checklist para entregar boas PRs!</p>
+            <br>
+            <div class="card checklist">
+                <label><input type="checkbox"> Testei localmente</label><br>
+                <label><input type="checkbox"> Commits organizados</label><br>
+                <label><input type="checkbox"> Nome da branch claro</label><br>
+                <label><input type="checkbox"> Sem código morto</label><br>
+                <label><input type="checkbox"> Não misturei refatoração com feature</label>
+            </div>
+        </section>
+    </div>
+
+    <section id="descricao" class="section">
+        <h2 id="title">Descrição faz diferença</h2>
+        <div class="grid grid-2">
+            <div class="card bad">
+                <h3>PR fraca</h3>
+                <p>"Atualizações diversas"</p>
+            </div>
+            <div class="card good">
+                <h3>PR forte</h3>
+                <p>Implementa validação de senha mínima de 8 caracteres e adiciona testes unitários cobrindo falhas.</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card bad">
+                    <h3>PR fraca</h3>
+                    <p>"Fix número 123"</p>
+                </div>
+                <div class="card good">
+                    <h3>PR forte</h3>
+                    <p>Arrumando falhas no style.css na class "function" e testando alterações com testes unitários.</p>
+                </div>
+        </div>
+    </section>
+
+    <section id="simulador" class="section">
+        <h2 id="title">Simulador de Merge</h2>
+        <div class="card simulator">
+            <label>Tamanho da PR</label>
+            <select id="size">
+                <option value="small">Pequena</option>
+                <option value="medium">Média</option>
+                <option value="large">Gigante</option>
+            </select>
+
+            <label>Descrição detalhada?</label>
+            <select id="desc">
+                <option value="yes">Sim</option>
+                <option value="no">Não</option>
+            </select>
+
+            <label>Respondeu feedback?</label>
+            <select id="feedback">
+                <option value="yes">Sim</option>
+                <option value="no">Ignorou</option>
+            </select>
+
+            <button onclick="simulate()">Simular resultado</button>
+            <div class="result" id="result"></div>
+        </div>
+    </section>
+
+    <footer>
+        Construindo reputação através de boas Pull Requests.
+    </footer>
+
+    <script>
+        function simulate() {
+            const size = document.getElementById("size").value;
+            const desc = document.getElementById("desc").value;
+            const feedback = document.getElementById("feedback").value;
+            const result = document.getElementById("result");
+
+            let score = 0;
+
+            if (size === "small") score += 2;
+            if (size === "medium") score += 1;
+            if (desc === "yes") score += 2;
+            if (feedback === "yes") score += 2;
+
+            if (score >= 5) {
+                result.textContent = "Merge aprovado rapidamente";
+                result.style.color = "green";
+            } else if (score >= 3) {
+                result.textContent = "Alguns comentários, mas provável aprovação.";
+                result.style.color = "orange";
+            } else {
+                result.textContent = "PR travada. Prepare-se para revisões intensas";
+                result.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
